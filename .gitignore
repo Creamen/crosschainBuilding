@@ -1,0 +1,6 @@
+*.swp
+dl/*
+arm-*
+aarch*
+x86*
+i386*
