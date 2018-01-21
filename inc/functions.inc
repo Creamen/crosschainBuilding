@@ -1,5 +1,13 @@
 # Functions
 
+function dlPackages() {
+	for k in ${packages[list]}; do
+		lastURL=$(listPackageURL $k)
+		dlFile "${lastURL}"
+	done
+}
+
+
 function showHelp() {
 	return 0
 }
@@ -18,6 +26,7 @@ function cmdCheck() {
 
 function initCheck() {
 	cmdCheck wget 1.16
+	cmdCheck lftp
 	cmdCheck gcc
 	cmdCheck g++
 	cmdCheck make
@@ -37,7 +46,7 @@ function dlFile() {
 	else
 		echo -e "\t${_f} ... has been already dowloaded"
 	fi
-	ln -sf ../dl/${_f} ${_f}
+	[ "$2" != "nolink" ] && ln -sf ../dl/${_f} ${_f}
 }
 
 function testRegEx() {
@@ -75,6 +84,19 @@ function initPath() {
 	mkdir -p ${PREFIX} ${MULTIARCH_NAME}/{build-binutils,build-gcc,build-glibc} dl
 	export PATH=${HOME}/cross/bin:${PATH}
 	cd ${MULTIARCH_NAME}
+}
+
+function listPackageURL() {
+	# 1 : package name
+	if [ ! -z ${packages[$1]} ]; then
+		echo ${packages[$1]}
+	else
+		echo ${packages[$1.url]}/$(LC_ALL=C \
+			&& lftp -c "open ${packages[$1.url]}/ && ls" --norc \
+			| grep -oE "$1-[0-9.]+.+\.${packages[$1.ext]}" \
+			| sort -t. -k1,1 -k2n,2n -k2n,3n | tail -1
+		)
+	fi
 }
 
 function initArchives() {

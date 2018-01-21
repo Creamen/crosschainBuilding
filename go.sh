@@ -8,7 +8,6 @@ initContext "$1"
 initPath
 
 initArchives
-
 unpackArchives
 
 ### Here we go
