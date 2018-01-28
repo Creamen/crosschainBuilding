@@ -3,6 +3,8 @@
 source inc/config.inc
 source inc/functions.inc
 
+lockBuild
+
 initCheck
 initContext "$1"
 initPath

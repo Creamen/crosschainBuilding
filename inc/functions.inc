@@ -1,5 +1,14 @@
 # Functions
 
+function lockBuild() {
+	if [ -f "${LOCKFILE}" ]; then
+		printf "[FATAL] Lock [%s] present - Build already in progress of previous unclean exit." "${LOCKFILE}"
+		exit 0;
+	fi
+	touch ${LOCKFILE}
+	trap "rm -f ${LOCKFILE}" EXIT SIGINT SIGTERM
+}
+
 function dlPackages() {
 	for k in ${packages[list]}; do
 		lastURL=$(listPackageURL $k)

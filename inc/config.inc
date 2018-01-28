@@ -1,4 +1,8 @@
+#!/bin/bash
+
 # configuration stuff
+
+LOCKFILE=$(pwd)/.lock
 
 declare -A linuxKernelCodename=(
 	[arm-linux-gnueabi]="arm"
