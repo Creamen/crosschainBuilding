@@ -3,6 +3,8 @@
 source inc/config.inc
 source inc/functions.inc
 
+[ -f ".config_override.inc" ] && source .config_override.inc
+
 lockBuild
 
 initCheck
