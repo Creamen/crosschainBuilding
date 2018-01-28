@@ -2,7 +2,7 @@
 
 function lockBuild() {
 	if [ -f "${LOCKFILE}" ]; then
-		printf "[FATAL] Lock [%s] present - Build already in progress of previous unclean exit." "${LOCKFILE}"
+		printf "[FATAL] Lock [%s] present - Build already in progress or previous unclean exit.\n" "${LOCKFILE}"
 		exit 0;
 	fi
 	touch ${LOCKFILE}
