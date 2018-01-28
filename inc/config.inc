@@ -29,27 +29,27 @@ declare -A compoments=(
 	[list]="binutils gcc glibc gmp mpfr mpc isl cloog linux"
 
 	[binutils.ver]="2.29.1"
-	[binutils.url]="http://ftp.wayne.edu/gnu/binutils"
+	[binutils.url]="https://ftp.gnu.org/gnu/binutils"
 	[binutils.ext]="xz"
 #
 	[gcc.ver]="7.2.0"
-	[gcc.url]="http://ftp.wayne.edu/gnu/gcc/gcc-[ver]"
+	[gcc.url]="https://ftp.gnu.org/gnu/gcc/gcc-[ver]"
 	[gcc.ext]="xz"
 #
 	[glibc.ver]="2.26"
-	[glibc.url]="http://ftp.wayne.edu/gnu/glibc"
+	[glibc.url]="https://ftp.gnu.org/gnu/glibc"
 	[glibc.ext]="xz"
 #
 	[gmp.ver]="6.1.2"
-	[gmp.url]="http://ftp.wayne.edu/gnu/gmp"
+	[gmp.url]="https://ftp.gnu.org/gnu/gmp"
 	[gmp.ext]="xz"
 #
 	[mpfr.ver]="4.0.0"
-	[mpfr.url]="http://ftp.wayne.edu/gnu/mpfr"
+	[mpfr.url]="https://ftp.gnu.org/gnu/mpfr"
 	[mpfr.ext]="xz"
 #
 	[mpc.ver]="1.1.0"
-	[mpc.url]="http://ftp.wayne.edu/gnu/mpc"
+	[mpc.url]="https://ftp.gnu.org/gnu/mpc"
 	[mpc.ext]="gz"
 #
 	[isl.ver]="0.18"
