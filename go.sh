@@ -60,7 +60,7 @@ fi
 if [ ! -f .gcc.0.done ]; then
 (
 cd build-gcc
-../gcc-${compoments[gcc.ver]}/configure --prefix=${HOME}/cross --target=${TARGET} --enable-languages=c,c++,go --disable-multilib
+../gcc-${compoments[gcc.ver]}/configure --prefix=${HOME}/cross --target=${TARGET} --enable-languages=c,c++,go --disable-multilib --enable-tls --with-pkgversion=Creamen.NET --enable-threads --enable-nls
 make -j6 all-gcc
 make install-gcc
 cd ..
