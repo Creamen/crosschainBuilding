@@ -66,7 +66,7 @@ declare -A compoments=(
 )
 
 declare -A packages=(
-	[list]="libffi pcre util-linux glib libunistring pkgconfig nettle gmp guile zlib git libevent libtool tmux openssh openssl libressl gnutls bash readline gettext mc make wget coreutils bison bc gawk ncurses tar diffutils findutils"
+	[list]="libffi pcre util-linux glib libunistring pkgconfig nettle gmp guile zlib git libevent libtool tmux openssh openssl libressl gnutls bash readline gettext mc make wget coreutils bison bc gawk ncurses tar diffutils findutils gdb"
 
 	[libevent]="https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz"
 	[tmux]="https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz"
@@ -77,6 +77,8 @@ declare -A packages=(
 
 	[libffi.url]="ftp://sourceware.org/pub/libffi"
 	[libffi.ext]="gz"
+	[gdb.url]="https://ftp.gnu.org/gnu/gdb"
+	[gdb.ext]="xz"
 	[git.url]="https://www.kernel.org/pub/software/scm/git"
 	[git.ext]="xz"
 	[pcre.url]="https://ftp.pcre.org/pub/pcre"
