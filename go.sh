@@ -66,7 +66,7 @@ make install-gcc
 cd ..
 ) | tee /proc/self/fd/2 >> .${ts_log}_gcc.log && touch .gcc.0.done || rm -f .gcc.0.done
 else
-	echo "[$(date -Iminutes)] gcc step 0 is up-to-date ... skipping !"
+	printf "[$(date -Iminutes)] gcc step 0 is up-to-date ... skipping !\n"
 fi
 
 # Step (4) = Standard C Library Headers and Startup Files
@@ -83,7 +83,7 @@ touch ${PREFIX}/include/gnu/stubs.h
 cd ..
 ) | tee /proc/self/fd/2 >> .${ts_log}_glibc.log && touch .glibc.0.done || rm -f .glibc.0.done
 else
-	echo "[$(date -Iminutes)] glibc step 0 is up-to-date ... skipping !"
+	printf "[$(date -Iminutes)] glibc step 0 is up-to-date ... skipping !\n"
 fi
 
 # Step (5) = Compiler Support Library
@@ -95,7 +95,7 @@ make install-target-libgcc
 cd ..
 ) | tee /proc/self/fd/2 >> .${ts_log}_gcc.log && touch .gcc.1.done || rm -f .gcc.1.done
 else
-	echo "[$(date -Iminutes)] gcc step 1 is up-to-date ... skipping !"
+	printf "[$(date -Iminutes)] gcc step 1 is up-to-date ... skipping !\n"
 fi
 
 # Step (6) = Standard C Library
@@ -107,7 +107,7 @@ make install
 cd ..
 ) | tee /proc/self/fd/2 >> .${ts_log}_glibc.log && touch .glibc.1.done || rm -f .glibc.1.done
 else
-	echo "[$(date -Iminutes)] glibc step 1 is up-to-date ... skipping !"
+	printf "[$(date -Iminutes)] glibc step 1 is up-to-date ... skipping !\n"
 fi
 
 # Step (7) = Standard C++ Library
@@ -119,22 +119,20 @@ make install
 cd ..
 ) | tee /proc/self/fd/2 >> .${ts_log}_gcc.log && touch .gcc.2.done || rm -f .gcc.2.done
 else
-	echo "[$(date -Iminutes)] gcc step 2 is up-to-date ... skipping !"
+	printf "[$(date -Iminutes)] gcc step 2 is up-to-date ... skipping !\n"
 fi
 ### curl -LO $(p=bash && e=gz && echo ftp://ftp.gnu.org/gnu/$p/$(lftp ftp://ftp.gnu.org/gnu/$p/ <<< "ls -tr $p*.$e" | tail -1 | grep -oE "$p.+"))
 
-echo
-echo "Your cross-build chain is available in ${PREFIX} ."
-echo "Add ${HOME}/cross/bin to your PATH env like that :"
-echo -e "\texport PATH=${HOME}/cross/bin:\${PATH}"
-echo
-
-echo "Build hello.c for your target architecture :"
+printf "\nYour cross-build chain is available in ${PREFIX} .\n"
+printf "Add ${HOME}/cross/bin to your PATH env like that :\n"
+printf "\texport PATH=${HOME}/cross/bin:\${PATH}\n\n\n"
+printf "Build hello.c for your target architecture :\n"
 cd - > /dev/null
 cd test
+printf "[INFO] ${HOME}/cross/bin/${MULTIARCH_NAME}-gcc hello.c -o ${MULTIARCH_NAME}-hello\n"
 ${HOME}/cross/bin/${MULTIARCH_NAME}-gcc hello.c -o ${MULTIARCH_NAME}-hello
 cd ..
-ls test/${MULTIARCH_NAME}-hello 
+ls -l test/${MULTIARCH_NAME}-hello 
 
 exit 0
 

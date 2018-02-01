@@ -28,7 +28,7 @@ function cleanMess() {
 function cmdCheck() {
 	which "$1" > /dev/null 2>&1 
 	if [[ $? -ne 0 ]]; then
-		echo "[FATAL] : You *must* install $1 $([ ! -z "$2" ] && echo ">= $2" ) to help me"
+		printf "[FATAL] : You *must* install %s %s to help me" "$1" "$([ ! -z "$2" ] && echo ">= $2" )"
 		exit 1
 	fi
 }	
@@ -49,11 +49,11 @@ function dlFile() {
 	if [ ! -f ../dl/${_f} ]; then 
 		wget -qN --show-progress "$1" -O ../dl/${_f}
 		if [[ $? -ne 0 ]]; then
-			echo "[FATAL] $1 not found - ABORT"
+			printf "[FATAL] %s not found - ABORT\n" "$1"
 			exit 1
 		fi
 	else
-		echo -e "\t${_f} ... has been already dowloaded"
+		printf "\t${_f} ... has been already dowloaded\n"
 	fi
 	[ "$2" != "nolink" ] && ln -sf ../dl/${_f} ${_f}
 }
@@ -73,14 +73,14 @@ function initContext() {
 	# so we enforce it like Debian
 	testRegEx "$1" "^([^-]+-){2}[^-]+$" 
 	if [[ $? -ne 0 ]]; then
-		echo "[FATAL] Given target architecture \"$1\" is not valid. - ABORT"
+		printf "[FATAL] Given target architecture \"%s\" is not valid. - ABORT\n" "$1"
 		exit 1
 	fi
 
 	MULTIARCH_NAME="$1"
 	KERNEL_ARCH=${linuxKernelCodename[${MULTIARCH_NAME}]}
 	if [ -z "${MULTIARCH_NAME}" -o -z "${KERNEL_ARCH}" ]; then 
-		echo "[FATAL] You *must* provide me a valid target architecture. \"${MULTIARCH_NAME}\" is not - ABORT"
+		printf "[FATAL] You *must* provide me a valid target architecture. \"%s\" is not - ABORT\n" "${MULTIARCH_NAME}"
 		exit 1
 	fi
 	TARGET=${MULTIARCH_NAME}
@@ -109,7 +109,7 @@ function listPackageURL() {
 }
 
 function initArchives() {
-	echo "Download archive source files ..."
+	printf "Download archive source files ...\n"
 	for c in ${compoments[list]}; do
 		url="${compoments[$c.url]}/$c-${compoments[$c.ver]}.tar.${compoments[$c.ext]}"
 		unset _r
@@ -130,20 +130,20 @@ function initArchives() {
 		)
 		dlFile ${url}
 	done
-	echo -e "Done !\n"
+	printf "Done !\n"
 }
 
 function unpackArchives() {
-	echo "Unarchive source files ..."
+	printf "Unarchive source files ...\n"
 	for f in *.tar.*; do
-		echo -ne "\t$f ... "
+		printf "\t$f ... "
 		if [ ! -d ${f%%.tar*} ]; then
 			tar -x -${tarComp[.${f#*tar.}]} -f $f
-			echo "OK"
+			printf "OK\n"
 		else
-			echo "Skipping because already unpacked !";
+			printf "Skipping because already unpacked !\n"
 		fi
 	done
-	echo "Done !"
+	printf "Done !\n"
 }
 
