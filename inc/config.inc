@@ -31,15 +31,15 @@ declare -A tarComp=(
 declare -A compoments=(
     [list]="binutils gcc glibc gmp mpfr mpc isl cloog linux"
 
-    [binutils.ver]="2.29.1"
+    [binutils.ver]="2.30"
     [binutils.url]="https://ftp.gnu.org/gnu/binutils"
     [binutils.ext]="xz"
 #
-    [gcc.ver]="7.2.0"
+    [gcc.ver]="8.1.0"
     [gcc.url]="https://ftp.gnu.org/gnu/gcc/gcc-[ver]"
     [gcc.ext]="xz"
 #
-    [glibc.ver]="2.26"
+    [glibc.ver]="2.27"
     [glibc.url]="https://ftp.gnu.org/gnu/glibc"
     [glibc.ext]="xz"
 #
@@ -47,7 +47,7 @@ declare -A compoments=(
     [gmp.url]="https://ftp.gnu.org/gnu/gmp"
     [gmp.ext]="xz"
 #
-    [mpfr.ver]="4.0.0"
+    [mpfr.ver]="4.0.1"
     [mpfr.url]="https://ftp.gnu.org/gnu/mpfr"
     [mpfr.ext]="xz"
 #
@@ -63,7 +63,7 @@ declare -A compoments=(
     [cloog.url]="ftp://gcc.gnu.org/pub/gcc/infrastructure"
     [cloog.ext]="gz"
 #
-    [linux.ver]="4.1.19"
+    [linux.ver]="4.15.17"
     [linux.url]="https://www.kernel.org/pub/linux/kernel/v[ver:0:1].x"
     [linux.ext]="xz"
 )
