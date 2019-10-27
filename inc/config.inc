@@ -31,15 +31,15 @@ declare -A tarComp=(
 declare -A compoments=(
     [list]="binutils gcc glibc gmp mpfr mpc isl cloog linux"
 
-    [binutils.ver]="2.30"
+    [binutils.ver]="2.33.1"
     [binutils.url]="https://ftp.gnu.org/gnu/binutils"
     [binutils.ext]="xz"
 #
-    [gcc.ver]="8.1.0"
+    [gcc.ver]="9.2.0"
     [gcc.url]="https://ftp.gnu.org/gnu/gcc/gcc-[ver]"
     [gcc.ext]="xz"
 #
-    [glibc.ver]="2.27"
+    [glibc.ver]="2.30"
     [glibc.url]="https://ftp.gnu.org/gnu/glibc"
     [glibc.ext]="xz"
 #
@@ -47,7 +47,7 @@ declare -A compoments=(
     [gmp.url]="https://ftp.gnu.org/gnu/gmp"
     [gmp.ext]="xz"
 #
-    [mpfr.ver]="4.0.1"
+    [mpfr.ver]="4.0.2"
     [mpfr.url]="https://ftp.gnu.org/gnu/mpfr"
     [mpfr.ext]="xz"
 #
@@ -63,7 +63,7 @@ declare -A compoments=(
     [cloog.url]="ftp://gcc.gnu.org/pub/gcc/infrastructure"
     [cloog.ext]="gz"
 #
-    [linux.ver]="4.15.17"
+    [linux.ver]="5.3.7"
     [linux.url]="https://www.kernel.org/pub/linux/kernel/v[ver:0:1].x"
     [linux.ext]="xz"
 )
@@ -71,12 +71,12 @@ declare -A compoments=(
 declare -A packages=(
     [list]="libffi pcre util-linux glib libunistring pkgconfig nettle gmp guile zlib git libevent libtool tmux openssh openssl libressl gnutls bash readline gettext mc make wget coreutils bison bc gawk ncurses tar diffutils findutils gdb"
 
-    [libevent]="https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz"
-    [tmux]="https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz"
+    [libevent]="https://github.com/libevent/libevent/releases/download/release-2.1.11-stable/libevent-2.1.11-stable.tar.gz"
+    [tmux]="https://github.com/tmux/tmux/releases/download/2.9a/tmux-2.9a.tar.gz"
     [zlib]="https://zlib.net/zlib-1.2.11.tar.xz"
     [pkgconfig]="https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz"
-    [util-linux]="https://www.kernel.org/pub/linux/utils/util-linux/v2.31/util-linux-2.31.tar.xz"
-    [glib]="https://ftp.gnome.org/pub/gnome/sources/glib/2.55/glib-2.55.1.tar.xz"
+    [util-linux]="https://www.kernel.org/pub/linux/utils/util-linux/v2.34/util-linux-2.34.tar.xz"
+    [glib]="https://ftp.gnome.org/pub/gnome/sources/glib/2.63/glib-2.63.0.tar.xz"
 
     [libffi.url]="ftp://sourceware.org/pub/libffi"
     [libffi.ext]="gz"
